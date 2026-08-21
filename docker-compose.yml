@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: pintureria-postgres
+    restart: unless-stopped
+    environment:
+      TZ: America/Buenos_Aires
+      PGTZ: America/Buenos_Aires
+      POSTGRES_DB: pintureria
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      # Estas dos líneas le dan a Postgres las zonas horarias que busca el driver
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/localtime:/etc/localtime:ro
+
+volumes:
+  postgres_data:
