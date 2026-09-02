@@ -32,7 +32,10 @@ public class ProductoController {
             @RequestParam(required = false) BigDecimal precioMin,
             @RequestParam(required = false) BigDecimal precioMax) {
 
+                System.out.println(">>> ENTRE AL PRODUCTO CONTROLLER");
+
         List<Producto> productos = service.listarConFiltros(nombre, marcaId, precioMin, precioMax);
+        System.out.println(">>> PRODUCTOS ENCONTRADOS: " + productos.size());
         return ResponseEntity.ok(productos);
     }
 
